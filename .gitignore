@@ -1,0 +1,10 @@
+
+*.xml
+*.iml
+*.pyc
+quickeda/__init__.py
+model_evaluation/__init__.py
+custom_transformers/__init__.py
+quickeda/.ipynb_checkpoints/quickeda-checkpoint.py
+model_evaluation/.ipynb_checkpoints/evaluation-checkpoint.py
+custom_transformers/.ipynb_checkpoints/preprocessing-checkpoint.py

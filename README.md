@@ -1,6 +1,4 @@
 # Data analysis tools
- Contains functions for EDA, preprocessing and parameter tuning. 
-
 
 I. preprocessing.py
 contains preprocessing transformers. These transformers were written to help me with some common transformations I use in analyses. The input/ouput are pandas dataframes.
@@ -19,7 +17,6 @@ provides common model training functions such as cross-validation and parameter 
 	4. Voting: performs exhaustive grid search over all combinations of (provided) models to find optimal voting ensemble
 
 The variants are named adding suffixes/prefixes to the above function names. Prefixes 'clf' and 'reg' imply the functions will work for classification and regression problems, respectively. Suffix 'Robust' implies the function averages, within each iteration, over several random states
-
 
 
 III. quickeda.py
