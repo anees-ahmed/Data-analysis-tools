@@ -1,6 +1,6 @@
 # Data analysis tools
 
-I. preprocessing.py
+I. custom_transformers/preprocessing.py
 contains preprocessing transformers. These transformers were written to help me with some common transformations I use in analyses. The input/ouput are pandas dataframes.
 	1. LowFreqCombiner: renames all classes whose sample frequency is lower than certain threshold to 'Other'. This can significantly speed up computation when there are a large number of categories, and depending on the problem may not even hurt predictive power
 	2. OHE: pd.get_dummies in transformer form
@@ -9,7 +9,7 @@ contains preprocessing transformers. These transformers were written to help me 
 	4. PowerTransformer: applies transformation (such log, boxcox, yeo-johnson) to "unskew" to numerical columns. Can selectively apply transformations if a skewness threshold is provided
 
 
-II. evaluation.py
+II. model_evaluation/evaluation.py
 provides common model training functions such as cross-validation and parameter tuning via grid search. Each of these functions applies preprocessing transformers on the train set and test set separately in every fold and iteration, and thus eliminate train-test leakage. At the moment these functions don't accept arbitrary sklearn metrics (coming soon). Some common metrics are already provided, rest can be added manually. See comments in the file for more details. Four functions and their variants are available:
 	1. CV: cross validation
 	2. GridSearch: performs exhaustive grid search over provided parameter space to find optimal parameter combination
@@ -19,7 +19,7 @@ provides common model training functions such as cross-validation and parameter 
 The variants are named adding suffixes/prefixes to the above function names. Prefixes 'clf' and 'reg' imply the functions will work for classification and regression problems, respectively. Suffix 'Robust' implies the function averages, within each iteration, over several random states
 
 
-III. quickeda.py
+III. quickeda/quickeda.py
 produces several plots and common statistical descriptions of the entire dataset. Some minor bugs that need fixing, but otherwise totally usable (as long as iPython is available)
 
 
