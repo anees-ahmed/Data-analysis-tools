@@ -11,15 +11,17 @@ contains preprocessing transformers. These transformers were written to help me 
 
 
 ## II. model_evaluation/evaluation.py
-provides common model training functions such as cross-validation and parameter tuning via grid search. Each of these functions applies preprocessing transformers on the train set and test set separately in every fold and iteration, and thus eliminate train-test leakage. At the moment these functions don't accept arbitrary sklearn metrics (coming soon). Some common metrics are already provided, rest can be added manually. See comments in the file for more details. Four functions and their variants are available:
-* **CV**: cross validation
+provides common model training functions such as cross-validation and parameter tuning via grid search. Each of these functions applies preprocessing transformers on the train set and test set separately in every fold and iteration, and thus eliminate train-test leakage. At the moment these functions don't accept arbitrary sklearn metrics (coming soon). Some common metrics are already provided, rest can be added manually as functions of two numpy arrays. See comments in the file for more details.
+
+Four functions and their variants are available
+* **CV**: k-fold cross validation
 * **GridSearch**: performs exhaustive grid search over provided parameter space to find optimal parameter combination
 * **BackFeatureSelect**:  sequential backwards feature selection. Only for the brave, as sequential feature selection in general causes extreme overfitting
-* **Voting**: performs exhaustive grid search over all combinations of (provided) models to find optimal voting ensemble
+* **Voting**: performs exhaustive search over all combinations of the provided models to find the optimal voting ensemble
 
-The variants are named adding suffixes/prefixes to the above function names.
+All variants of these four functions are named by adding suffixes/prefixes to their names.
 * Prefixes 'clf' and 'reg' imply the functions will work for classification and regression problems, respectively.
-* Suffix 'Robust' implies the function averages, within each iteration, over several random states
+* Suffix 'Robust' implies the function averages, within each iteration, over several random states.
 
 
 ## III. quickeda/quickeda.py
