@@ -1,12 +1,13 @@
 # Data analysis tools
+Some tools for data analysis 
 
 ## I. custom_transformers/preprocessing.py
-contains preprocessing transformers. These transformers were written to help me with some common transformations I use in analyses. The input/ouput are pandas dataframes.
-* **LowFreqCombiner**: renames all classes whose sample frequency is lower than certain threshold to 'Other'. This can significantly speed up computation when there are a large number of categories, and depending on the problem may not even hurt predictive power
-* **OHE**: pd.get_dummies in transformer form
-* **Scaler**: combines standard scaler, minmax scaler and robust scaler (all familiar transformers from sklearn). The real use is that it also provides a "binary" correction, where non-binary columns are rescaled by 0.5 after a Standard scaling, so that the standard deviations of binary and non-binary columns end up being comparable.
+contains preprocessing transformers. These transformers were written to help me with some common transformations I use in analyses. The input/ouput are pandas dataframes, which I find are more readable than numpy arrays.
+* **LowFreqCombiner**: renames all classes whose sample frequency is lower than certain threshold to 'Other', or another string of choice. This can significantly speed up computation when there are a large number of relatively unimportant categories, and depending on the problem may not even hurt predictive power.
+* **OHE**: standard pandas one hot encoding function [pd.get_dummies](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.get_dummies.html) in transformer form
+* **Scaler**: offers the familiar scikit-learn transformers [StandardScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html), [MinMaxScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html) and [RobustScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html). The real use is that it also provides a "binary" correction, where non-binary columns are rescaled by 0.5 after a standard scaling (i.e. mean and std.dev are set to 0 and 1 respectively), so that the standard deviations of binary and non-binary columns end up being comparable.
 * **KNNImputer**: imputes missing data using KNeighbors algorithm. Uses scikit-learn's [KNeighborsClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) if the column to be imputed is categorical, and [KNeighborsRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html) otherwise.
-* **PowerTransformer**: applies transformation (such log, boxcox, yeo-johnson) to "unskew" to numerical columns. Can selectively apply transformations if a skewness threshold is provided
+* **PowerTransformer**: offers transformations such log, boxcox and yeo-johnson to "unskew" numerical columns. Can selectively apply transformations if a skewness threshold is provided
 
 
 ## II. model_evaluation/evaluation.py
