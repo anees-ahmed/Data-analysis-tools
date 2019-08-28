@@ -2,10 +2,9 @@
 
 ## I. custom_transformers/preprocessing.py
 contains preprocessing transformers. These transformers were written to help me with some common transformations I use in analyses. The input/ouput are pandas dataframes.
-* #### LowFreqCombiner
-renames all classes whose sample frequency is lower than certain threshold to 'Other'. This can significantly speed up computation when there are a large number of categories, and depending on the problem may not even hurt predictive power
-* OHE: pd.get_dummies in transformer form
-* Scaler: combines standard scaler, minmax scaler and robust scaler (all familiar transformers from sklearn). The real use is that it also provides a "binary" correction, where non-binary columns are rescaled by 0.5 after a Standard scaling, so that the standard deviations of binary and non-binary columns end up being comparable.
+* **LowFreqCombiner**: renames all classes whose sample frequency is lower than certain threshold to 'Other'. This can significantly speed up computation when there are a large number of categories, and depending on the problem may not even hurt predictive power
+* **OHE**: pd.get_dummies in transformer form
+* **Scaler**: combines standard scaler, minmax scaler and robust scaler (all familiar transformers from sklearn). The real use is that it also provides a "binary" correction, where non-binary columns are rescaled by 0.5 after a Standard scaling, so that the standard deviations of binary and non-binary columns end up being comparable.
 * KNNImputer: imputes missing data using KNeighbors algorithm. Uses sklearn.neighbors.KNeighborsClassifier if the column to be imputed is categorical, and sklearn.KNeighborsRegressor otherwise.
 * PowerTransformer: applies transformation (such log, boxcox, yeo-johnson) to "unskew" to numerical columns. Can selectively apply transformations if a skewness threshold is provided
 
