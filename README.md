@@ -16,7 +16,9 @@ provides common model training functions such as cross-validation and parameter 
 * BackFeatureSelect:  sequential backwards feature selection. Only for the brave, as sequential feature selection in general causes extreme overfitting
 * Voting: performs exhaustive grid search over all combinations of (provided) models to find optimal voting ensemble
 
-The variants are named adding suffixes/prefixes to the above function names. Prefixes 'clf' and 'reg' imply the functions will work for classification and regression problems, respectively. Suffix 'Robust' implies the function averages, within each iteration, over several random states
+The variants are named adding suffixes/prefixes to the above function names.
+* Prefixes 'clf' and 'reg' imply the functions will work for classification and regression problems, respectively.
+* Suffix 'Robust' implies the function averages, within each iteration, over several random states
 
 
 ## III. quickeda/quickeda.py
