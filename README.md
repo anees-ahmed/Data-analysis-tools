@@ -5,16 +5,16 @@ contains preprocessing transformers. These transformers were written to help me 
 * **LowFreqCombiner**: renames all classes whose sample frequency is lower than certain threshold to 'Other'. This can significantly speed up computation when there are a large number of categories, and depending on the problem may not even hurt predictive power
 * **OHE**: pd.get_dummies in transformer form
 * **Scaler**: combines standard scaler, minmax scaler and robust scaler (all familiar transformers from sklearn). The real use is that it also provides a "binary" correction, where non-binary columns are rescaled by 0.5 after a Standard scaling, so that the standard deviations of binary and non-binary columns end up being comparable.
-* KNNImputer: imputes missing data using KNeighbors algorithm. Uses sklearn.neighbors.KNeighborsClassifier if the column to be imputed is categorical, and sklearn.KNeighborsRegressor otherwise.
-* PowerTransformer: applies transformation (such log, boxcox, yeo-johnson) to "unskew" to numerical columns. Can selectively apply transformations if a skewness threshold is provided
+* **KNNImputer**: imputes missing data using KNeighbors algorithm. Uses scikit-learn's [KNeighborsClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html) if the column to be imputed is categorical, and [KNeighborsRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html) otherwise.
+* **PowerTransformer**: applies transformation (such log, boxcox, yeo-johnson) to "unskew" to numerical columns. Can selectively apply transformations if a skewness threshold is provided
 
 
 ## II. model_evaluation/evaluation.py
 provides common model training functions such as cross-validation and parameter tuning via grid search. Each of these functions applies preprocessing transformers on the train set and test set separately in every fold and iteration, and thus eliminate train-test leakage. At the moment these functions don't accept arbitrary sklearn metrics (coming soon). Some common metrics are already provided, rest can be added manually. See comments in the file for more details. Four functions and their variants are available:
-* CV: cross validation
-* GridSearch: performs exhaustive grid search over provided parameter space to find optimal parameter combination
-* BackFeatureSelect:  sequential backwards feature selection. Only for the brave, as sequential feature selection in general causes extreme overfitting
-* Voting: performs exhaustive grid search over all combinations of (provided) models to find optimal voting ensemble
+* **CV**: cross validation
+* **GridSearch**: performs exhaustive grid search over provided parameter space to find optimal parameter combination
+* **BackFeatureSelect**:  sequential backwards feature selection. Only for the brave, as sequential feature selection in general causes extreme overfitting
+* **Voting**: performs exhaustive grid search over all combinations of (provided) models to find optimal voting ensemble
 
 The variants are named adding suffixes/prefixes to the above function names.
 * Prefixes 'clf' and 'reg' imply the functions will work for classification and regression problems, respectively.
