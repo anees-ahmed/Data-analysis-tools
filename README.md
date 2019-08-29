@@ -28,7 +28,7 @@ All variants of these four functions are named by adding suffixes/prefixes to th
 produces several plots and common statistical descriptions of the entire dataset. Some minor bugs that need fixing, but otherwise totally usable (as long as iPython is available)
 
 
-## TO DO:
+## Planned updates:
 1. Make notation uniform
 2. Add more comments
 3. Add option to use iPlotly plots instead of iPython widgets for interactive plots, as iPlotly is more widely supported (this will take time)
