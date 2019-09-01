@@ -1,5 +1,4 @@
 # Data analysis tools
-Some tools for data analysis 
 
 ## I. custom_transformers/preprocessing.py
 contains preprocessing transformers. These transformers were written to help me with some common transformations I use in analyses. The input/ouput are pandas dataframes, which I find are more readable than numpy arrays.
